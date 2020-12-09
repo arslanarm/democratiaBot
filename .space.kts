@@ -6,7 +6,7 @@
 job("Tests and Deploy") {
     container("gradle:jdk11") {
         resources {
-            memory = 768
+            memory = 2048
         }
 
         kotlinScript { api ->
