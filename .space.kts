@@ -11,7 +11,7 @@ job("Tests and Deploy") {
 
     container("curlimages/curl") {
         shellScript {
-            content = """curl --silent --show-error --fail -X POST ${Secrets("server_ip")} -H 'Authorization: ${Secrets("authorization")}' -H 'Content-Type: application/json' -d {"repository": "$repository","tag": "$tag","env": {"DEMOCRATIA_TOKEN": "${Secrets("democratia_token")}"}}"""
+            content = """curl --silent --show-error --fail -X POST ${Secrets("server_ip")} -H 'Authorization: ${Secrets("authorization")}' -H 'Content-Type: application/json' -d '{"repository": "$repository","tag": "$tag","env": {"DEMOCRATIA_TOKEN": "${Secrets("democratia_token")}"}}'"""
         }
     }
 }
