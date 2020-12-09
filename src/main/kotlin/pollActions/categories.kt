@@ -13,7 +13,7 @@ import utils.getCategory
 import utils.getCategoryOrNull
 
 fun SubCommands.categories() {
-    "createCategory" {
+    "createCategory"{
         respond("Enter the name")
         val name = readOrStop(StringArgument)
         execute {
@@ -22,7 +22,7 @@ fun SubCommands.categories() {
             }
         }
     }
-    "moveCategory" {
+    "moveCategory"{
         respond("Enter the name of category")
         val name = readOrStop(LongArgument) {
             guild?.getCategoryOrNull(Snowflake(it)) != null
@@ -37,7 +37,7 @@ fun SubCommands.categories() {
             }
         }
     }
-    "deleteCategory" {
+    "deleteCategory"{
         respond("Enter the name of category")
         val name = readOrStop(LongArgument) {
             guild?.getCategoryOrNull(Snowflake(it)) != null

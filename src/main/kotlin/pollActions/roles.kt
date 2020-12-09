@@ -1,21 +1,17 @@
 package components
 
-import com.gitlab.kordlib.common.entity.Permission
-import com.gitlab.kordlib.common.entity.Permissions
 import com.gitlab.kordlib.core.behavior.GuildBehavior
 import com.gitlab.kordlib.core.behavior.addRole
-import com.gitlab.kordlib.core.behavior.edit
 import com.gitlab.kordlib.core.entity.Role
 import com.gitlab.kordlib.kordx.commands.argument.primitive.IntArgument
 import com.gitlab.kordlib.kordx.commands.argument.text.StringArgument
-import com.gitlab.kordlib.kordx.commands.kord.argument.RoleArgument
 import com.gitlab.kordlib.kordx.commands.kord.argument.UserArgument
 import com.gitlab.kordlib.kordx.commands.kord.model.context.KordCommandEvent
 import kotlinx.coroutines.flow.firstOrNull
 import java.awt.Color
 
 fun SubCommands.roles() {
-    "createRole" {
+    "createRole"{
         respond("Enter the role's name")
         val name = readOrStop(StringArgument)
 
@@ -32,7 +28,7 @@ fun SubCommands.roles() {
             }
         }
     }
-    "deleteRole" {
+    "deleteRole"{
         respond("Enter the role's name")
         val name = readOrStop(StringArgument)
 
@@ -40,7 +36,7 @@ fun SubCommands.roles() {
             guild!!.roles.firstOrNull { it.name == name }?.delete()
         }
     }
-    "addRole" {
+    "addRole"{
         respond("Enter the role")
         val role = readRole()
 
@@ -51,7 +47,7 @@ fun SubCommands.roles() {
             user.asMember(guild!!.id).addRole(role.id)
         }
     }
-    "removeRole" {
+    "removeRole"{
         respond("Enter the role")
         val role = readRole()
 

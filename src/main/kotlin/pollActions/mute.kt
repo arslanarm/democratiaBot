@@ -5,7 +5,6 @@ import com.gitlab.kordlib.common.entity.Permissions
 import com.gitlab.kordlib.core.behavior.GuildBehavior
 import com.gitlab.kordlib.core.behavior.addRole
 import com.gitlab.kordlib.core.behavior.edit
-import com.gitlab.kordlib.core.entity.PermissionOverwrite
 import com.gitlab.kordlib.kordx.commands.argument.primitive.IntArgument
 import com.gitlab.kordlib.kordx.commands.kord.argument.UserArgument
 import components.SubCommands
@@ -29,7 +28,7 @@ suspend fun GuildBehavior.mutedRole() =
         }
 
 fun SubCommands.mute() {
-    "mute" {
+    "mute"{
         respond("Mention the user")
         val user = readOrStop(UserArgument)
         respond("Enter the number of minutes")
@@ -45,7 +44,7 @@ fun SubCommands.mute() {
             member.removeRole(role.id)
         }
     }
-    "unmute" {
+    "unmute"{
         respond("Mention the user")
         val user = readOrStop(UserArgument)
         val role = guild!!.mutedRole()
