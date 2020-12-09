@@ -16,7 +16,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Gradle
-        run: ./gradlew test
+        run: sudo bash gradlew test
 
   build_and_pub:
     # Если тесты были пройдены успешно
