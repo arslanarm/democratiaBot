@@ -11,8 +11,6 @@ import com.gitlab.kordlib.core.entity.PermissionOverwrite
 import com.gitlab.kordlib.kordx.commands.argument.primitive.LongArgument
 import com.gitlab.kordlib.kordx.commands.argument.text.StringArgument
 import com.gitlab.kordlib.kordx.commands.kord.argument.ChannelArgument
-import com.gitlab.kordlib.kordx.commands.kord.argument.TextChannelArgument
-import com.gitlab.kordlib.kordx.commands.kord.argument.VoiceChannelArgument
 import components.SubCommands
 import components.execute
 import components.readOrStop
@@ -49,7 +47,7 @@ fun SubCommands.channels() {
     }
     "changeChannelCategory" {
         respond("Mention the channel")
-        val channel = readOrStop(TextChannelArgument)
+        val channel = readOrStop(ChannelArgument)
         respond("Enter the category's id")
         val categoryId = readOrStop(LongArgument) { categoryId ->
             guild?.getCategoryOrNull(Snowflake(categoryId)) != null
@@ -60,26 +58,9 @@ fun SubCommands.channels() {
             }
         }
     }
-    "restrictTextChannelToRole" {
+    "restrictChannelToRole" {
         respond("Mention the channel")
-        val channel = readOrStop(TextChannelArgument)
-        respond("Enter the role's name")
-        val role = readRole()
-        execute {
-            channel.edit {
-                val allow = PermissionOverwrite.forRole(role.id, allowed = Permissions {
-                    +Permission.SendMessages
-                })
-                val deny = PermissionOverwrite.forEveryone(guild!!.id, denied = Permissions {
-                    +Permission.SendMessages
-                })
-                permissionOverwrites.add(allow, deny)
-            }
-        }
-    }
-    "restrictVoiceChannelToRole" {
-        respond("Mention the channel")
-        val channel = readOrStop(VoiceChannelArgument)
+        val channel = readOrStop(ChannelArgument)
         respond("Enter the role's name")
         val role = readRole()
         execute {
