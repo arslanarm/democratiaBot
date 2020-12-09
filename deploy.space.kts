@@ -7,7 +7,7 @@
 job("Deploy") {
    	docker {
     	build {}
-        
+       	
         publish("plony.registry.jetbrains.space/p/democratia/democratia-bot/myimage") {
             tag = "\$JB_SPACE_GIT_BRANCH"
         }
