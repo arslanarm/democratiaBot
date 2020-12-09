@@ -10,8 +10,8 @@ import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import kapt.kotlin.generated.configure
 
-suspend fun main(args: Array<String>) {
-    val token = args[0]
+suspend fun main() {
+    val token = System.getenv("DEMOCRATIA_TOKEN")
     val bot = Kord(token) {
         httpClient = HttpClient(CIO) {
             engine {
