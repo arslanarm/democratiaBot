@@ -17,7 +17,7 @@ job("Tests and Deploy") {
 	docker {
     	build {}
         push("plony.registry.jetbrains.space/p/democratia/democratia-bot/myimage") {
-            tag = "0.0.$JB_SPACE_EXECUTION_NUMBER"
+            tag = "0.1"
         }
     }
 }
