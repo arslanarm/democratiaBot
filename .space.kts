@@ -15,6 +15,7 @@ job("Tests and Deploy") {
         env["DEMOCRATIA_TOKEN"] = Secrets("democratia_token")
         env["REPOSITORY"] = Secrets("repository")
         env["TAG"] = "v0.1"
+        env["NAME"] = "plony/democratia"
         shellScript {
             content = "python /app/upload.py"
         }
