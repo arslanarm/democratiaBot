@@ -1,11 +1,9 @@
 
 job("Tests and Deploy") {
-    val repository = "plony.registry.jetbrains.space/p/democratia/democratia-bot/myimage"
-    val tag = "0.1"
 	docker {
     	build {}
-        push(repository) {
-            this.tag = tag
+        push("plony.registry.jetbrains.space/p/democratia/democratia-bot/myimage") {
+            this.tag = "0.1"
         }
     }
 }
