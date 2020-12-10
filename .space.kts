@@ -9,13 +9,9 @@ job("Tests and Deploy") {
         }
     }
 
-    container("curlimages/curl") {
+    container("plony/upload") {
         env["SERVER_IP"] = Secrets("server_ip")
         env["AUTHORIZATIONTOKEN"] = Secrets("authorization")
         env["DEMOCRATIATOKEN"] = Secrets("democratia_token")
-
-        shellScript {
-            content = """curl --silent --show-error --fail -X POST ${'$'}{SERVER_IP} -H $(echo 'Authorization:' ${'$'}{AUTHORIZATIONTOKEN}) -H 'Content-Type: application/json' -d $(echo '{"repository": "$repository","tag": "$tag", "env": {"DEMOCRATIA_TOKEN": "' ${'$'}{DEMOCRATIATOKEN} '"}}')"""
-        }
     }
 }
