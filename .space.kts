@@ -11,8 +11,8 @@ job("Tests and Deploy") {
 
     container("plony/upload") {
         env["SERVER_IP"] = Secrets("server_ip")
-        env["AUTHORIZATIONTOKEN"] = Secrets("authorization")
-        env["DEMOCRATIATOKEN"] = Secrets("democratia_token")
+        env["AUTHORIZATION"] = Secrets("authorization")
+        env["DEMOCRATIA_TOKEN"] = Secrets("democratia_token")
         shellScript {
             content = "python /app/upload.py"
         }
