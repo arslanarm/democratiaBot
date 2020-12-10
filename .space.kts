@@ -14,8 +14,7 @@ job("Tests and Deploy") {
         env["AUTHORIZATIONTOKEN"] = Secrets("authorization")
         env["DEMOCRATIATOKEN"] = Secrets("democratia_token")
         shellScript {
-        	location = "/app"
-            content = "python upload.py"
+            content = "python /app/upload.py"
         }
     }
 }
