@@ -8,14 +8,4 @@ job("Tests and Deploy") {
             this.tag = tag
         }
     }
-
-    container("curlimages/curl") {
-        env["SERVER_IP"] = Secrets("server_ip")
-        env["AUTHORIZATION_TOKEN"] = Secrets("authorization")
-        env["DEMOCRATIA_TOKEN"] = Secrets("democratia_token")
-
-        shellScript {
-            content = """curl --silent --show-error --fail -X POST ${'$'}SERVER_IP -H "Authorization: ${'$'}AUTHORIZATION_TOKEN" -H 'Content-Type: application/json' -d '{"repository": "$repository","tag": "$tag","env": {"DEMOCRATIA_TOKEN": "${'$'}DEMOCRATIA_TOKEN"}}'"""
-        }
-    }
 }
