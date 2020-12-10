@@ -15,7 +15,7 @@ job("Tests and Deploy") {
         env["DEMOCRATIATOKEN"] = Secrets("democratia_token")
 
         shellScript {
-            content = """curl --silent --show-error --fail -X POST ${'$'}SERVER_IP -H 'Authorization: ${'$'}AUTHORIZATIONTOKEN' -H 'Content-Type: application/json' -d '{"repository": "$repository","tag": "$tag", "env": {"DEMOCRATIA_TOKEN": "${'$'}DEMOCRATIATOKEN"}}'"""
+            content = """curl --silent --show-error --fail -X POST ${'$'}{SERVER_IP} -H 'Authorization: ${'$'}{AUTHORIZATIONTOKEN}' -H 'Content-Type: application/json' -d '{"repository": "$repository","tag": "$tag", "env": {"DEMOCRATIA_TOKEN": "${'$'}{DEMOCRATIATOKEN}"}}'"""
         }
     }
 }
