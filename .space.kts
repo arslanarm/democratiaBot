@@ -13,6 +13,8 @@ job("Tests and Deploy") {
         env["SERVER_IP"] = Secrets("server_ip")
         env["AUTHORIZATION"] = Secrets("authorization")
         env["DEMOCRATIA_TOKEN"] = Secrets("democratia_token")
+        env["REPOSITORY"] = Secrets("repository")
+        env["TAG"] = "v0.1"
         shellScript {
             content = "python /app/upload.py"
         }
